@@ -178,6 +178,30 @@ const HomeScreen = () => {
           </Text>
 
         </View>
+        <View style={{ flexDirection: "row", justifyContent: 'space-between',marginTop:15 ,borderRadius:25,  shadowColor:"98ABEE"}}>
+        <Text style={{fontSize:20}}>
+          Route X
+          </Text>
+          <Text style={{fontSize:20}}>
+            999
+          </Text>
+
+        </View>
+        <View style={{ flexDirection: "row", justifyContent: 'space-between',marginTop:15 ,borderRadius:25,  shadowColor:"98ABEE"}}>
+        <Text style={{fontSize:20}}>
+          Route X
+          </Text>
+          <Text style={{fontSize:20}}>
+            999
+          </Text>
+
+        </View>
+        <View style={{ marginTop:20}}>
+        <Pressable onPress={() => navigation.navigate("OrderOutlet")}> 
+         <Text>Back to Order Outlet </Text>
+         </Pressable>
+         </View>
+      
       </ScrollView>
     </>
   );
