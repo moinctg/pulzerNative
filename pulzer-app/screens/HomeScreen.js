@@ -2,6 +2,7 @@ import {
   SafeAreaProvider,
   useSafeAreaInsets,
 } from "react-native-safe-area-context";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   StyleSheet,
   Text,
@@ -13,18 +14,29 @@ import {
   Platform,
   StatusBar,
   ScrollView,
+  TouchableOpacity
 } from "react-native";
-import React, { useEffect, useInsertionEffect, useState } from "react";
+import React, { useContext, useEffect, useInsertionEffect, useState } from "react";
 // const logoImg = require("../assets/logo.png");
 import { Feather } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { user } from "@expo/vector-icons";
 import * as Location from "expo-location";
+import Spinner from 'react-native-loading-spinner-overlay';
 import { useNavigation } from "@react-navigation/native";
+import { AuthContext } from "../context/AuthContext";
 
-const HomeScreen = () => {
+const HomeScreen = ( {data} ) => {
+  const {userInfo,isLoading,logout} = useContext(AuthContext)
+
+  // const handleLogout = () => {
+  //   AsyncStorage.clear();
+  //   navigation.navigate('Login');
+  // };
+ 
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
+  const url =  "https://api.restful-api.dev/objects";
 
   const [displayCurrentAddress, setdisplayCurrentAddress] = useState(
     "we are loading your location"
@@ -33,7 +45,13 @@ const HomeScreen = () => {
   useEffect(() => {
     checkLocationEnabled();
     getCureentLocation();
+    // fetch(url)
+    // .then((resp) => resp.json())
+    // .then((json) => setData(json))
+    // .catch((error) => console.error(error))
+    // .finally(() => setLoading(false));
   }, []);
+  
 
   const checkLocationEnabled = async () => {
     let enabled = await Location.hasServicesEnabledAsync();
@@ -101,7 +119,8 @@ const HomeScreen = () => {
         style={{ flex: 1, paddingTop: insets.top, backgroundColor: "#F0F0F0" }}
       >
         {/* location and profile  */}
-        <View
+        <View 
+         
           style={{ flexDirection: "row", alignItems: "center", padding: 10 }}
         >
           <Entypo name="location" size={30} color="#E32636" />
@@ -118,6 +137,15 @@ const HomeScreen = () => {
             />
           </Pressable>
         </View>
+        <Spinner visible={isLoading} />
+        <Spinner visible={isLoading} />
+        <View style={styles.container}>
+      <Text style={styles.text}>Home</Text>
+      <Text>Welcome {userInfo.user.name}</Text>
+      <TouchableOpacity style={styles.button} onPress={ logout}>
+        <Text style={styles.textButton}>Logout</Text>
+      </TouchableOpacity>
+    </View>
 
         {/* Search Bar  */}
         <View
@@ -158,9 +186,11 @@ const HomeScreen = () => {
           </Text>
         </View>
         <View style={{ flexDirection: "row", justifyContent: 'space-between',marginTop:15,borderRadius:20 ,width:450,height:70,borderWidth:2,backgroundColor:"#98ABEE",
-
- 
+          
       }}>
+      
+       
+        
         <Text style={{fontSize:20}}>
           Route X
           </Text>
@@ -196,6 +226,16 @@ const HomeScreen = () => {
           </Text>
 
         </View>
+
+        <View>
+          <Text> {post.id} </Text>
+          <Text> {post.name} </Text>
+          <Text> {post.data} </Text>
+        </View>
+         
+        
+
+      
         <View style={{ marginTop:20}}>
         <Pressable onPress={() => navigation.navigate("OrderOutlet")}> 
          <Text>Back to Order Outlet </Text>
@@ -205,6 +245,7 @@ const HomeScreen = () => {
       </ScrollView>
     </>
   );
+  
 };
 
 export default HomeScreen;

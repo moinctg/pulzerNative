@@ -31,10 +31,14 @@ const ScanQRCode = () => {
     })();
   }, []);
   const handleBarCodeScanned = ({ type, data }) => {
-    setScanned(true);
-    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+    fetch(`https://example.com/api/v1/qr-code?type=${type}&data=${data}`)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data,type)
+        setScanned (true)
+       
+      });
   };
-
   const renderCamera = () => {
     return (
       <View style={styles.cameraContainer}>
@@ -81,8 +85,8 @@ const ScanQRCode = () => {
     </View>
       
       <View style={{ marginTop:20}}>
-        <Pressable onPress={() => navigation.navigate("Home")}> 
-         <Text>Back to  Home </Text>
+        <Pressable onPress={() => navigation.navigate("RouteOutlet")}> 
+         <Text>Back to  Route Outlet </Text>
          </Pressable>
          </View>
          </ScrollView>

@@ -9,6 +9,8 @@ import OrderOutlet from './screens/OrderOutlet'
 import RouteOutlet from './screens/RouteOutlet'
 import ScanQRCode from './screens/ScanQRCode'
 import ForgotPassword from './screens/ForgotPassword'
+import Register from './screens/SignupScreen'
+import Test from './screens/Test'
 
 export default function StackNavigator() {
     const Stack = createNativeStackNavigator();
@@ -22,6 +24,8 @@ export default function StackNavigator() {
       <Stack.Screen name="RouteOutlet" component={RouteOutlet}  options={{headShown:false}}/>
       <Stack.Screen name="ScanQRCode" component={ScanQRCode}  options={{headShown:false}}/>
       <Stack.Screen name="ForgotPassword" component={ForgotPassword}  options={{headShown:false}}/>
+     
+      <Stack.Screen name="data" component={Test}  options={{headShown:false}}/>
       </Stack.Navigator>
       </NavigationContainer>
     

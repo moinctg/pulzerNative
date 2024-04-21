@@ -1,13 +1,14 @@
 import React from 'react'
-import { View } from 'react-native'
+import { View,Text} from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 const ForgotPassword = () => {
   return (
-    <div>
+    <SafeAreaView>
       <View>
-      <Text>Forgot Password </Text>
+        <Text>Forgot password view </Text>
       </View>
-    </div>
+    </SafeAreaView>
   )
 }
 
