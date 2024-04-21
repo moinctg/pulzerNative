@@ -18,6 +18,8 @@ const Test = () => {
   return (
     <View>
       <Text> this is text </Text>
+       <Text> this is text </Text>
+    
     </View>
   )
 }
