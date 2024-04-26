@@ -10,7 +10,7 @@ const Test = () => {
     }
         ,[])
     const dataFetch = () => {
-  fetch('https://jsonplaceholder.typicode.com/posts/1')
+  fetch('http://localhost:8000/')
   .then((response) => response.json())
   .then((json) => console.log(json));
 

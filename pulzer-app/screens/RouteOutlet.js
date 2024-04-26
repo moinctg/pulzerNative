@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import {
   StyleSheet,
@@ -11,44 +11,63 @@ import {
   Platform,
   StatusBar,
   ScrollView,
+  Button,
+  TouchableOpacity,
 } from "react-native";
-import { Feather } from "@expo/vector-icons";
+const userImg = require("../assets/user.png");
+const leftImg = require("../assets/left.png");
 
 const RouteOutlet = () => {
   const navigation = useNavigation();
   return (
     <ScrollView>
      <View style={{ flexDirection: "row", justifyContent: 'space-between' }}>
-          <Text style={{ fontSize:50 ,}}>Pulzer</Text>
-          <Feather name="user" size={28} color="#fd5c63" />
-
+        <Text style={{ fontSize:50,color:"#201658", fontWeight:"bold"}}>PULZER</Text>
+        <Image source={userImg}  />
         </View>
-        <View>
-          <Text style={{fontSize:28,margin:15}}>Order For Outlet </Text>
-          </View>
-          <View style={{borderColor:"gray",borderWidth:4,  borderRadius:18}}>
-          <TextInput  style = {{ fontSize:28, margin:15,color:"#98ABEE"}} placeholder="Search "></TextInput>
-          {/* <Feather name="search" size={28} color="blue" /> */}
+        <View style={{ marginTop:15, flex:1,flexDirection:"row"}}>
+        <Image source={leftImg}  />
+        <Text style={{fontSize:30,color:"#201658" ,fontWeight:"bold"}}>
+        Order for Outlet KZ </Text>
         </View>
-        <View style={{ flexDirection: "row",  justifyContent: 'space-between', alignItems:"center", marginTop:15 ,width:400,height:70,shadowOpacity:"2",
+      <View
+        style={{
+          borderRadius: 25,
+          // backgroundColor:"F6F5F2",
+          shadowRadius: 15,
+          marginTop:70,
+        }}
+      >
+        <Text style={{fontSize:17}}>Order Successfully placeholder!</Text>
+        <Text style={{fontSize:17}}>Total Amount: 9,000 </Text>
+    
+   
+      
+      </View>
+      <View style={{ marginTop: 20 }}>
 
- 
-      }}>
-        <Text style={{fontSize:20}}>
-           Product 
-          </Text>
-          <Text style={{fontSize:20}}>
-            Quantity
-          </Text>
-
-        </View>
-        <View style={{ marginTop:20}}>
-        <Pressable onPress={() => navigation.navigate("Home")}> 
-         <Text>Back to  Home </Text>
-         </Pressable>
-         </View>
+      <TouchableOpacity
+        style={{alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#201658',
+        colorl:"white",
+        fontSize:25,
+        borderRadius: 25,
+        paddingVertical:18,
+        margingLeft:30,
+        width:"90%",
+        marginTop: 25,}}
+        // onPress={() => setScanned(false)}
+        // disabled={scanned}
+      >
+         <Text style={{ color:"white", textAlign:"center", fontSize:25}}>Ok</Text>
+      </TouchableOpacity>
+        <Pressable onPress={() => navigation.navigate("Home")}>
+          <Text>Back to Home </Text>
+        </Pressable>
+      </View>
     </ScrollView>
-  )
-}
+  );
+};
 
-export default RouteOutlet
+export default RouteOutlet;

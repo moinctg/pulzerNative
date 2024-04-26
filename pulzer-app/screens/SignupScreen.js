@@ -176,7 +176,7 @@ const SignupScreen = () => {
           </View>
 
           <Pressable
-            onPress={()=> {register(username,password,first_name,last_name)}}
+            // onPress={()=> {register(username,password,first_name,last_name)}}
             style={{
               width: 400,
               backgroundColor: "#201658",

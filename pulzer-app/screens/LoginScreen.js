@@ -221,7 +221,7 @@ const LoginScreen = () => {
         <TouchableOpacity style={styles.button} onPress={()=> {
           login(username,password)
         }}>
-          <Text style={styles.text}>Login</Text>
+          <Text style={styles.text}>Log In</Text>
         </TouchableOpacity>
       {/* )} */}
 
@@ -294,11 +294,14 @@ const LoginScreen = () => {
                 height: 24,
               },
               button: {
-                padding: 10,
+                // padding: 10,
                 alignItems: 'center',
-                justifyContent: 'center',
+                // justifyContent: 'center',
                 backgroundColor: '#201658',
-                borderRadius: 5,
+                fontSize:25,
+                borderRadius: 22,
+                paddingVertical:18,
+      
                 marginTop: 25,
               },
               buttonDisable: {
@@ -312,6 +315,7 @@ const LoginScreen = () => {
               text: {
                 color: 'white',
                 fontWeight: '700',
+              
               },
               textFailed: {
                 alignSelf: 'flex-end',

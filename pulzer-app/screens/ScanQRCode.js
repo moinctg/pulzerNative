@@ -16,6 +16,8 @@ import {
 import { Feather } from "@expo/vector-icons";
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { Camera } from 'expo-camera';
+const userImg = require("../assets/user.png");
+const leftImg = require("../assets/left.png");
 import React, { useState, useEffect } from 'react';
 
 
@@ -65,15 +67,18 @@ const ScanQRCode = () => {
   return (
     <ScrollView>
       <View style={{ flexDirection: "row", justifyContent: 'space-between' }}>
-          <Text style={{ fontSize:50 ,}}>Pulzer</Text>
-          <Feather name="user" size={28} color="#fd5c63" />
+        <Text style={{ fontSize:50,color:"#201658", fontWeight:"bold"}}>PULZER</Text>
+        <Image source={userImg}  />
         </View>
-        <View>
-          <Text>Scan Outlet QR Code</Text>
-        </View>
+        <View style={{ marginTop:15, flex:1,flexDirection:"row"}}>
+        <Image source={leftImg}  />
+        <Text style={{fontSize:30,color:"#201658" ,fontWeight:"bold"}}>
+        Scan Outlet QR Code  </Text>
+        
+      </View>
         <View style={styles.container}>
-      <Text style={styles.title}>Welcome to the Pulzer App!</Text>
-      <Text style={styles.paragraph}>Scan Outlet QR Code</Text>
+      {/* <Text style={styles.title}>Welcome to the Pulzer App!</Text>
+      <Text style={styles.paragraph}>Scan Outlet QR Code</Text> */}
       {renderCamera()}
       <TouchableOpacity
         style={styles.button}
@@ -85,8 +90,8 @@ const ScanQRCode = () => {
     </View>
       
       <View style={{ marginTop:20}}>
-        <Pressable onPress={() => navigation.navigate("RouteOutlet")}> 
-         <Text>Back to  Route Outlet </Text>
+        <Pressable onPress={() => navigation.navigate("scanReport")}> 
+         <Text>Back to  Scan Report </Text>
          </Pressable>
          </View>
          </ScrollView>
@@ -121,7 +126,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   button: {
-    backgroundColor: 'blue',
+    backgroundColor: '#201658',
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 5,
